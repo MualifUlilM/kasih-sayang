@@ -24,10 +24,20 @@ class _SplashState extends State<Splash> {
       seconds: 3,
       navigateAfterSeconds: LoginPage(),
       image: Image.asset(
-        'lib/assets/images/maxiaga_putih.png',
+        'lib/assets/images/tanpabg.png',
       ),
       photoSize: 120,
-      backgroundColor: MaxColor.merah,
+      // backgroundColor: MaxColor.merah,
+      gradientBackground: LinearGradient(
+                colors: [
+                  Color(0xFFF36DB6),
+                  Color(0xFF52CFE1),
+                ],
+                begin: const FractionalOffset(0.0, 0.0),
+                end: const FractionalOffset(3.0, 0.0),
+                stops: [0,0.3],
+                tileMode: TileMode.clamp
+              ),
       styleTextUnderTheLoader: new TextStyle(),
     );
   }

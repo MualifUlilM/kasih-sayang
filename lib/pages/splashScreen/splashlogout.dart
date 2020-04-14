@@ -1,14 +1,17 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:maxiaga/models/spbu.dart';
+import 'package:KasihSayang/models/spbu.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:splashscreen/splashscreen.dart';
-import 'package:maxiaga/pages/login/login.dart';
+import 'package:KasihSayang/pages/login/login.dart';
 import 'package:http/http.dart' as http;
-import 'package:maxiaga/assets/maxcolor.dart';
+import 'package:KasihSayang/assets/maxcolor.dart';
+
+import 'package:KasihSayang/providers/user.dart';
 
 class SplashLogout extends StatefulWidget {
   String token;
@@ -40,7 +43,7 @@ class _SplashLogoutState extends State<SplashLogout> {
     // spbu = widget.fetchPost();
     // checkLoginStatus();
     super.initState();
-    // logoutPost(widget.token);
+    // Provider.of<User>(context).logout();
   }
 
   // logoutPost(String token)async{
@@ -63,15 +66,19 @@ class _SplashLogoutState extends State<SplashLogout> {
     return SplashScreen(
       seconds: 3,
       navigateAfterSeconds: LoginPage(),
-      title: Text(
-        "MAXIAGA",
-        style: TextStyle(
-          fontSize: 28,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-        ),
-      ),
-      backgroundColor: MaxColor.merah,
+      image: Image.asset('lib/assets/images/tanpabg.png'),
+      photoSize: 120,
+      // backgroundColor: MaxColor.merah,
+      gradientBackground: LinearGradient(
+                colors: [
+                  Color(0xFFF36DB6),
+                  Color(0xFF52CFE1),
+                ],
+                begin: const FractionalOffset(0.0, 0.0),
+                end: const FractionalOffset(3.0, 0.0),
+                stops: [0,0.3],
+                tileMode: TileMode.clamp
+              ),
       styleTextUnderTheLoader: new TextStyle(),
     );
   }

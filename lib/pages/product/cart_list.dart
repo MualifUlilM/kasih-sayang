@@ -31,7 +31,7 @@ class CartList extends StatelessWidget {
           itemCount: cartData.length == 0 ? 0 : cartData.length + 2,
           itemBuilder: (context, index) {
             if (index < cartData.length) {
-              return CartItemData(cartData.values.toList()[index]);
+              return CartItemData(counter: true,cart: cartData.values.toList()[index],);
             } else if (index == cartData.length) {
               return new CartItemSubTotal(total: total, ship: ship);
             } else {

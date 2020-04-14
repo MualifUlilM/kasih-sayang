@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:expandable_card/expandable_card.dart';
-import 'package:maxiaga/pages/profile/widget/list_kendaraan.dart';
+import 'package:KasihSayang/pages/profile/widget/list_kendaraan.dart';
 import 'package:provider/provider.dart';
 
 import '../../../providers/user.dart';

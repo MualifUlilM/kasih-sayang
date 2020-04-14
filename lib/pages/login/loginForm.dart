@@ -1,14 +1,15 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:KasihSayang/pages/lupa_password/lupa_password_page.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:progress_dialog/progress_dialog.dart';
 
 import '../my_home_page.dart';
-import 'package:maxiaga/pages/splashScreen/splashlogin.dart';
-import 'package:maxiaga/providers/user.dart';
+import 'package:KasihSayang/pages/splashScreen/splashlogin.dart';
+import 'package:KasihSayang/providers/user.dart';
 import '../../assets/maxcolor.dart';
 import '../signup/register.dart';
 import 'externalLogin.dart';
@@ -74,6 +75,8 @@ class _LoginFormState extends State<LoginForm> {
       child: Form(
         key: formKey,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             TextFormField(
               controller: emailController,
@@ -111,7 +114,7 @@ class _LoginFormState extends State<LoginForm> {
                   top: MediaQuery.of(context).size.height * 0.028),
               height: MediaQuery.of(context).size.height * 0.09,
               decoration: BoxDecoration(
-                  color: MaxColor.merah,
+                  color: Colors.pink,
                   borderRadius: BorderRadius.circular(5)),
               child: FlatButton(
                 child: Center(
@@ -175,7 +178,9 @@ class _LoginFormState extends State<LoginForm> {
                 children: <Widget>[
                   FlatButton(
                     child: Text("Lupa Password?"),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, ForgotPasswordPage.routingName);
+                    },
                   ),
                   FlatButton(
                     child: Text("Buat Akun"),
@@ -187,8 +192,8 @@ class _LoginFormState extends State<LoginForm> {
                 ],
               ),
             ),
-            Text('Atau Login Dengan'),
-            ExternalLogin(),
+            // Text('Atau Login Dengan'),
+            // ExternalLogin(),
           ],
         ),
       ),

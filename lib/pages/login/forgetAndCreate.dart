@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:maxiaga/pages/signup/register.dart';
+import 'package:KasihSayang/pages/signup/register.dart';
 
 class ButtonCreateForget extends StatelessWidget {
   Position location;

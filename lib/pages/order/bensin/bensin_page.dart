@@ -4,10 +4,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:maxiaga/api.dart';
-import 'package:maxiaga/assets/maxcolor.dart';
-import 'package:maxiaga/main.dart';
-import 'package:maxiaga/pages/history/riwayat.dart';
+import 'package:KasihSayang/api.dart';
+import 'package:KasihSayang/assets/maxcolor.dart';
+import 'package:KasihSayang/main.dart';
+import 'package:KasihSayang/pages/history/riwayat.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 // import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:http/http.dart' as http;
@@ -16,7 +16,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:geocoder/geocoder.dart';
 
 import '../../my_home_page.dart';
-import 'package:maxiaga/providers/user.dart';
+import 'package:KasihSayang/providers/user.dart';
 
 class BensinPage extends StatefulWidget {
   static const routeName = 'bensin';

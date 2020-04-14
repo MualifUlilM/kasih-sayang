@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:maxiaga/api.dart';
-import 'package:maxiaga/assets/maxcolor.dart';
-import 'package:maxiaga/service/post/post.dart';
+import 'package:KasihSayang/api.dart';
+import 'package:KasihSayang/assets/maxcolor.dart';
+import 'package:KasihSayang/service/post/post.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:provider/provider.dart';
 import '../../my_home_page.dart';

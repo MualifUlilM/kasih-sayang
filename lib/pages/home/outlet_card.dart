@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../providers/outlet.dart';
 
 class OutletCard extends StatelessWidget {
@@ -37,7 +38,10 @@ class OutletCard extends StatelessWidget {
           ],
         ),
       ),
-      onPressed: () {},
+      onPressed: () async {
+        String googleUrl = 'https://www.google.com/maps/search/?api=1&query=${_outlet.lat},${_outlet.lng}';
+        await launch(googleUrl);
+      },
     );
   }
 }

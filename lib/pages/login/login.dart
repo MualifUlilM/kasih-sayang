@@ -78,37 +78,42 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
         appBar: null,
         key: scaffoldKey,
-        backgroundColor: MaxColor.merah,
+        backgroundColor: Theme.of(context).primaryColor,
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               // gambar maxiaga
               Container(
-                padding: EdgeInsets.only(top: 20),
-                height: MediaQuery.of(context).size.height*0.2,
+                // padding: EdgeInsets.only(top: 20),
+                height: MediaQuery.of(context).size.height*0.4,
+                width: double.infinity,
                 decoration: BoxDecoration(
-                    // color: Colors.red
+                    gradient: LinearGradient(
+                colors: [
+                  Color(0xFFF36DB6),
+                  Color(0xFF52CFE1),
+                ],
+                begin: const FractionalOffset(0.0, 0.0),
+                end: const FractionalOffset(3.0, 0.0),
+                stops: [0,0.3],
+                tileMode: TileMode.clamp
+              ),
                     ),
-                child: Center(
-                  child: Container(
-                    height: 120,
-                    width: 230,
-                    child: Image.asset('lib/assets/images/maxiaga_putih.png'),
-                  ),
-                ),
+                child: Image.asset('lib/assets/images/tanpabg.png', fit: BoxFit.cover,)
               ),
               // form
               Container(
                 padding: EdgeInsets.all(20),
-                height: MediaQuery.of(context).size.height * 0.8,
+                height: MediaQuery.of(context).size.height * 0.6,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40),
-                    topRight: Radius.circular(40),
-                  ),
+                  // borderRadius: BorderRadius.only(
+                  //   topLeft: Radius.circular(40),
+                  //   topRight: Radius.circular(40),
+                  // ),
                 ),
                 child: Column(
                   children: <Widget>[

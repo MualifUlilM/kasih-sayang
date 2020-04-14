@@ -6,7 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:flutter/material.dart';
-import 'package:maxiaga/models/spbu.dart';
+import 'package:KasihSayang/models/spbu.dart';
 
 class Post {
   String url = 'http://dev.maxiaga.com/api';

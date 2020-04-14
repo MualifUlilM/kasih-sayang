@@ -117,14 +117,14 @@ class ActionButton extends StatelessWidget {
               color: Theme.of(context).accentColor,
             ),
             onPressed: () {
-              Provider.of<Cart>(context, listen: false).addItem(
-                _outletId,
-                _outletName,
-                _product.id,
-                _product.price,
-                _product.name,
-                _product.image,
-              );
+              // Provider.of<Cart>(context, listen: false).addItem(
+              //   _outletId,
+              //   _outletName,
+              //   _product.id,
+              //   _product.price,
+              //   _product.name,
+              //   _product.image,
+              // );
             },
           ),
           width: 50,

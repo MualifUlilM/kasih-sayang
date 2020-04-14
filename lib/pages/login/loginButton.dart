@@ -22,7 +22,7 @@ class LoginButton extends StatelessWidget {
         margin: EdgeInsets.only(top: 30),
         height: 60,
         decoration: BoxDecoration(
-            color: MaxColor.merah, borderRadius: BorderRadius.circular(5)),
+            color: Colors.blue, borderRadius: BorderRadius.circular(5)),
         child: FlatButton(
           child: Center(
             child: Text(

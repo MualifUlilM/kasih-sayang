@@ -20,7 +20,9 @@ class CartItem {
 }
 
 class Cart with ChangeNotifier {
-  Map<String, CartItem> _items = {};
+  Map<String, CartItem> _items = {
+    // '11':CartItem(id: 1, name: 'Es mangut', image: 'https://awsimages.detik.net.id/community/media/visual/2019/03/08/985df401-ac19-4ed0-ae36-4bdbf5e68981_43.jpeg?w=700&q=90', price: 11000, qty: 1)
+  };
   int _outletId = 0;
   String _outletName = '';
   int ship = -1;
@@ -63,6 +65,7 @@ class Cart with ChangeNotifier {
     int price,
     String name,
     String image,
+    int qty
   ) {
     if (_outletId != outletId) {
       clear();
@@ -89,7 +92,7 @@ class Cart with ChangeNotifier {
           image: image,
           name: name,
           price: price,
-          qty: 1,
+          qty: qty,
         ),
       );
     }

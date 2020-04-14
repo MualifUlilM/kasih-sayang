@@ -4,9 +4,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
+import 'package:KasihSayang/appBar.dart';
+import 'package:KasihSayang/pages/product/add_story.dart';
+import 'package:KasihSayang/providers/sosmed.dart';
 import 'package:provider/provider.dart';
 
-import 'package:maxiaga/pages/history/riwayat.dart';
+import 'package:KasihSayang/pages/history/riwayat.dart';
 import '../../providers/outlets.dart';
 import '../../providers/user.dart';
 import './outlet_card.dart';
@@ -25,83 +28,128 @@ class ProductPage extends StatelessWidget {
     final _outlets = outletProvider.outlets;
     final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
         new GlobalKey<RefreshIndicatorState>();
+    final sosmedProvider = Provider.of<Sosmed>(context);
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Image.asset(
-          'lib/assets/images/maxiaga_putih.png',
-          scale: 20,
-        ),
-
-        centerTitle: true,
-        elevation: 0.0,
-        // backgroundColor: Colors.,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, AddPost.routingName);
+        },
+        child: Icon(Icons.add),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
         children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(12),
-            child: Text(
-              "Produk",
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
+          Padding(
+            padding: EdgeInsets.only(
+              top: MediaQuery.of(context).size.height * 0.102,
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.fromLTRB(20, 20, 0, 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          'Cerita',
+                          style:
+                              TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                        ),
+                        IconButton(icon: Icon(Icons.filter_list), onPressed: (){})
+                      ],
+                    ),
+                  ),
+                  Consumer<Sosmed>(builder: (_, sosmed, _2) {
+                    return SizedBox(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: List.generate(sosmed.posts.length, (i) {
+                          return Container(
+                            padding: EdgeInsets.all(10),
+                            margin: EdgeInsets.symmetric(vertical: 1),
+                            // color: Colors.blue,
+                            // height: MediaQuery.of(context).size.height * 0.15,
+                            child: Column(
+                              children: <Widget>[
+                                Row(
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: CircleAvatar(
+                                        backgroundColor: Colors.pink,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        "${sosmed.posts[i].name}",
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  child: sosmed.posts[i].imageUrl != null
+                                      ? Image.network(sosmed.posts[i].imageUrl)
+                                      : Container(),
+                                ),
+                                SizedBox(
+                                  // height: MediaQuery.of(context).size.height * 0.4,
+                                  child: sosmed.posts[i].imageFile != null
+                                      ? Container(child: Image.file(sosmed.posts[i].imageFile,), height: MediaQuery.of(context).size.height * 0.4,)
+                                      : Container(),
+                                ),
+                                Row(
+                                  children: <Widget>[
+                                    IconButton(
+                                        icon: Icon(
+                                          Icons.favorite,
+                                          color: Colors.pink,
+                                        ),
+                                        onPressed: () {}),
+                                    Text("4.5K"),
+                                    IconButton(
+                                        icon: Icon(
+                                          Icons.comment,
+                                          color: Colors.pink,
+                                        ),
+                                        onPressed: () {}),
+                                    Text("5K"),
+                                    IconButton(
+                                        icon: Icon(
+                                          Icons.share,
+                                          color: Colors.pink,
+                                        ),
+                                        onPressed: () {}),
+                                    Text("2K"),
+                                  ],
+                                ),
+                                Container(
+                                  alignment: Alignment.centerLeft,
+                                  padding: EdgeInsets.all(15),
+                                  child: Text(
+                                    sosmed.posts[i].caption,
+                                    style: TextStyle(fontSize: 18),
+                                    // textAlign: TextAlign.left,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        }),
+                      ),
+                    );
+                  })
+                ],
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(bottom: 10, left: 10),
-            child: Text(
-              "Outlet terdekat",
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).primaryColor),
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Expanded(
-            child: RefreshIndicator(
-              key: _refreshIndicatorKey,
-              onRefresh: () => _refreshOutlets(context),
-              child: _outlets.length == 0
-                  ? ListView.builder(
-                      itemCount: 1,
-                      itemBuilder: (_, i) => Center(
-                        child: Column(
-                          children: <Widget>[
-                            Text(
-                              'Tidak Terdapat SPBU di sekitar anda',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                              ),
-                            ),
-                            Text(
-                              'Seret Kebawah untuk menyegarkan',
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    )
-                  : ListView.separated(
-                      separatorBuilder: (_, v) => Divider(
-                        color: Colors.grey,
-                      ),
-                      itemCount: _outlets.length,
-                      itemBuilder: (_, i) => OutletCard(_outlets[i]),
-                    ),
-            ),
-          ),
+          AppBarBikin(),
         ],
       ),
     );

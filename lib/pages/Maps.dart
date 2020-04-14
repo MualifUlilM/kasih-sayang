@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
-import 'package:maxiaga/models/spbu.dart';
+import 'package:KasihSayang/models/spbu.dart';
 import 'package:provider/provider.dart';
 import '../providers/user.dart';
 

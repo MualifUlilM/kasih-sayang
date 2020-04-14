@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:maxiaga/assets/maxcolor.dart';
-import 'package:maxiaga/main.dart';
-import 'package:maxiaga/models/spbu.dart';
+import 'package:KasihSayang/assets/maxcolor.dart';
+import 'package:KasihSayang/main.dart';
+import 'package:KasihSayang/models/spbu.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:splashscreen/splashscreen.dart';
-import 'package:maxiaga/pages/login/login.dart';
+import 'package:KasihSayang/pages/login/login.dart';
 import 'package:http/http.dart' as http;
 
 import '../my_home_page.dart';

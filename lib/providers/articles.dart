@@ -18,7 +18,9 @@ class Articles with ChangeNotifier {
   }
 
   Future<void> fetchAndSet(int offset, int perPage) async {
+    print("articles fetch executed");
     response = await Api().fetchArticles(offset, perPage);
+    print(response);
     final data = response.data;
     List<Article> _temp = [];
     for (var i = 0; i < data.length; i++) {
@@ -29,7 +31,9 @@ class Articles with ChangeNotifier {
       ));
     }
     _articles = _temp;
-
+    for (var item in _articles) {
+      print(item.title);
+    }
     notifyListeners();
   }
 }

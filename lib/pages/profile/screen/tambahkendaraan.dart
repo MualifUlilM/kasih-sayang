@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
-import 'package:maxiaga/providers/user.dart';
+import 'package:KasihSayang/providers/user.dart';
 import 'package:provider/provider.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:progress_dialog/progress_dialog.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:maxiaga/main.dart';
+import 'package:KasihSayang/main.dart';
 
 import '../../../providers/user.dart';
 

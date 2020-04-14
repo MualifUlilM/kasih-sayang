@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:maxiaga/pages/konsultasi/konsultasi_detail.dart';
-import 'package:maxiaga/pages/history/riwayat.dart';
-import 'package:maxiaga/pages/konsultasi/tambahKonsultasi.dart';
+import 'package:KasihSayang/appBar.dart';
+import 'package:KasihSayang/pages/konsultasi/konsultasi_detail.dart';
+import 'package:KasihSayang/pages/history/riwayat.dart';
+import 'package:KasihSayang/pages/konsultasi/tambahKonsultasi.dart';
 
 class Konsultasi extends StatefulWidget {
   @override
@@ -43,12 +44,12 @@ class _KonsultasiState extends State<Konsultasi> {
     return Stack(
       children: <Widget>[
         Scaffold(
-          appBar: AppBar(
-            title: Image.asset('lib/assets/images/maxiaga_putih.png', scale: 20,),
-            centerTitle: true,
-            elevation: 0.0,
-//            backgroundColor: Colors.white,
-          ),
+//           appBar: AppBar(
+//             title: Image.asset('lib/assets/images/maxiaga_putih.png', scale: 20,),
+//             centerTitle: true,
+//             elevation: 0.0,
+// //            backgroundColor: Colors.white,
+//           ),
           floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add),
             onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>TambahKonsultasi()));},
@@ -56,9 +57,10 @@ class _KonsultasiState extends State<Konsultasi> {
           body:Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              AppBarBikin(),
               Container(
                 padding: EdgeInsets.all(12),
-                child: Text("Konsultasi",
+                child: Text("Curhat",
                   style: TextStyle(fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
@@ -77,7 +79,7 @@ class _KonsultasiState extends State<Konsultasi> {
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.grey[200],
-                        hintText: 'Cari Pesan',
+                        hintText: 'Cari Curhatan',
                         contentPadding:
                         const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),
                         focusedBorder: OutlineInputBorder(
@@ -123,14 +125,14 @@ class _KonsultasiState extends State<Konsultasi> {
           ),
         ),
         
-        Center(
-          child: Container(
-            height: double.infinity,
-//            margin: EdgeInsets.symmetric(horizontal: 10),
-            decoration: BoxDecoration(color: Colors.grey.withOpacity(0.4), ),
-            child: Center(child: Text('Coming Soon', style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 28),),),
-          ),
-        )
+//         Center(
+//           child: Container(
+//             height: double.infinity,
+// //            margin: EdgeInsets.symmetric(horizontal: 10),
+//             decoration: BoxDecoration(color: Colors.grey.withOpacity(0.4), ),
+//             child: Center(child: Text('Coming Soon', style: TextStyle(color: Theme.of(context).primaryColor, fontWeight: FontWeight.bold, fontSize: 28),),),
+//           ),
+//         )
       ],
     );
   }

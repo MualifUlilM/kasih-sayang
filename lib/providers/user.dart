@@ -27,6 +27,7 @@ class User with ChangeNotifier {
   List<Kendaraan> kendaraan = [];
 
   User() {
+    print(token);
     if (this.token == null) {
       this.checkLogin();
     }
@@ -40,6 +41,8 @@ class User with ChangeNotifier {
     print('check login executed');
     try {
       prefs = await SharedPreferences.getInstance();
+      prefs.getString("token");
+      print(prefs.getString("token"));
       // prefs.clear();
 
       if (prefs.getString("token") != null) {
@@ -187,7 +190,22 @@ class User with ChangeNotifier {
   }
 
   Future<Response> logout() async {
+    response = await Api().reqApi(
+      method: 'POST',
+      url: 'post_logout',
+      data: {
+        "token":this.token,
+      }
+    );
+    
+    if (response.data['api_status'] == 1) {
+      prefs = await SharedPreferences.getInstance();
     prefs.clear();
+    this.token = null;
+    print(prefs.getString('token'));
+    notifyListeners();
+    return response;
+    }
     return response;
   }
 

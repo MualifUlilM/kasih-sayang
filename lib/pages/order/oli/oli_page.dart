@@ -8,9 +8,9 @@ import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
-import 'package:maxiaga/models/spbu.dart';
-import 'package:maxiaga/pages/Maps.dart';
-import 'package:maxiaga/service/post/post.dart';
+import 'package:KasihSayang/models/spbu.dart';
+import 'package:KasihSayang/pages/Maps.dart';
+import 'package:KasihSayang/service/post/post.dart';
 
 import '../../my_home_page.dart';
 import '../../../providers/user.dart';

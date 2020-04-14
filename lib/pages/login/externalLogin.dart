@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class ExternalLogin extends StatelessWidget {
   List<String> imgPath = [
-    'lib/assets/images/googlered.png',
-    'lib/assets/images/fbred.png',
-    'lib/assets/images/tweetred.png',
+    'lib/assets/images/search.png',
+    'lib/assets/images/facebook-logo.png',
+    'lib/assets/images/twitter.png',
   ];
 
   @override
@@ -13,7 +13,7 @@ class ExternalLogin extends StatelessWidget {
       padding: EdgeInsets.only(top: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: List.generate(imgPath.length, (i){
+        children: List.generate(imgPath.length, (i) {
           return buildButtonLogo(imgPath[i], context);
         }),
       ),
@@ -21,16 +21,18 @@ class ExternalLogin extends StatelessWidget {
   }
 
   Widget buildButtonLogo(String path, BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.1,
-      width: MediaQuery.of(context).size.width * 0.1,
-      child: Center(
-          child: Image.asset(
-        path,
-      )
-          ),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10)),
+    return FlatButton(
+      highlightColor: Colors.transparent,
+      onPressed: (){},
+          child: Container(
+        height: MediaQuery.of(context).size.height * 0.075,
+        width: MediaQuery.of(context).size.width * 0.15,
+        child: Center(
+            child: Image.asset(
+          path,
+          scale: 12,
+        )),
+      ),
     );
   }
 }

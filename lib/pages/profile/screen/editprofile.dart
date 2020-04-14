@@ -1,3 +1,4 @@
+import 'package:KasihSayang/appBar.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -96,6 +97,7 @@ class _EditProfileState extends State<EditProfile> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppBarBikin.colors[0],
         title: Text(
           "Edit Profil",
           style: TextStyle(
@@ -108,11 +110,13 @@ class _EditProfileState extends State<EditProfile> {
         padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             Padding(
                 padding: EdgeInsets.all(30),
                 child: FlatButton(
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       CircleAvatar(
                         backgroundImage: _image == null
@@ -121,13 +125,12 @@ class _EditProfileState extends State<EditProfile> {
                         radius: 50,
                         backgroundColor: Colors.grey[200],
                       ),
-                      Container(
-                        padding: EdgeInsets.all(20),
-                        child: Text(
-                          "Ganti Foto",
-                          style:
-                              TextStyle(fontSize: 18, color: Colors.grey[400]),
-                        ),
+                      FittedBox(
+                        child:Text(
+                            "Ganti Foto",
+                            style:
+                                TextStyle(fontSize: 18, color: Colors.grey[400]),
+                          ),
                       )
                     ],
                   ),
@@ -258,6 +261,24 @@ class _EditProfileState extends State<EditProfile> {
                         Container(
                           width: 120,
                           padding: EdgeInsets.only(right: 20),
+                          child: Text("Status"),
+                        ),
+                        Flexible(
+                          child: TextFormField(
+                            // controller: _kotaController,
+                           initialValue: 'Jomblo',
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          width: 120,
+                          padding: EdgeInsets.only(right: 20),
                           child: Text("Kota"),
                         ),
                         Flexible(
@@ -319,11 +340,11 @@ class _EditProfileState extends State<EditProfile> {
             ),
             FlatButton(
               child: Container(
-                  margin: EdgeInsets.only(top: 100),
+                  margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.05),
                   height: 50,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                      color: Colors.red,
+                      color: AppBarBikin.colors[1],
                       borderRadius: BorderRadius.circular(2)),
                   child: Center(
                     child: Text("SIMPAN",

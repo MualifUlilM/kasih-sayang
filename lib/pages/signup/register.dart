@@ -2,12 +2,13 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:async';
 
+import 'package:KasihSayang/appBar.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
-import 'package:maxiaga/assets/maxcolor.dart';
+import 'package:KasihSayang/assets/maxcolor.dart';
 import 'package:path/path.dart';
 
 import '../../pages/login/login.dart';
@@ -82,7 +83,7 @@ class _RegisterState extends State<Register> {
       'password_confirmation': confirm,
     });
     print(formData.fields);
-    var res = await dio.post('http://admin.maxiaga.com/api/post_signup',
+    var res = await dio.post('http://dev.maxiaga.com/api/post_signup',
         data: formData);
 
     Navigator.of(context, rootNavigator: true).pop();
@@ -171,350 +172,348 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: null,
-      backgroundColor: MaxColor.merah,
-      body: SingleChildScrollView(
-          // physics: NeverScrollableScrollPhysics(),
-          child: Stack(
+      backgroundColor:  AppBarBikin.colors[1],
+      body: Stack(
         children: <Widget>[
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.only(top: 20),
-                height: MediaQuery.of(context).size.height / 4,
-                decoration: BoxDecoration(
-                    // color: MaxColor.merah
-                    ),
-                child: Center(
-                  child: Text(
-                    "MAXIAGA",
-                    style: TextStyle(
-                        fontSize: 28,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
+          SingleChildScrollView(
+                      child: Column(
+              // mainAxisAlignment: MainAxisAlignment.start,
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).padding.top * 1.5),
+                  width: MediaQuery.of(context).size.width * 1,
+                  height: MediaQuery.of(context).size.height * 0.2,
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(colors: AppBarBikin.colors)),
+                  child: Image.asset(
+                    'lib/assets/images/tanpabg.png',
+                    scale: 3,
                   ),
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.all(20),
-                // height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
+                Container(
+                  padding: EdgeInsets.all(20),
+                  height: MediaQuery.of(context).size.height * 0.8,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(40),
-                        topRight: Radius.circular(40))),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    // crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        child: Stack(
-                          children: <Widget>[
-                            CircleAvatar(
-                              backgroundColor: MaxColor.merah,
-                              backgroundImage: _image != null
-                                  ? FileImage(_image)
-                                  : AssetImage('lib/assets/images/avatar.png'),
-                              radius: 50,
-                            ),
-                            Positioned(
-                              top: 0,
-                              right: 0,
-                              child: Container(
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.white,
-                                      border:
-                                          Border.all(color: MaxColor.merah)),
-                                  child: Center(
-                                    child: IconButton(
-                                      icon: Icon(
-                                        Icons.add_a_photo,
-                                        color: MaxColor.merah,
-                                      ),
-                                      onPressed: () {
-                                        showDialog<void>(
-                                          context: context,
-                                          barrierDismissible:
-                                              false, // user must tap button!
-                                          builder: (BuildContext context) {
-                                            return AlertDialog(
-                                              title: Text('Select Image'),
-                                              content: SingleChildScrollView(
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
-                                                  children: <Widget>[
-                                                    IconButton(
-                                                      icon: Icon(
-                                                        Icons.camera_alt,
-                                                        size: 50,
+                    // borderRadius: BorderRadius.only(
+                    //     topLeft: Radius.circular(40),
+                    //     topRight: Radius.circular(40)),
+                  ),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          child: Stack(
+                            children: <Widget>[
+                              CircleAvatar(
+                                backgroundColor:  AppBarBikin.colors[0],
+                                backgroundImage: _image != null
+                                    ? FileImage(_image)
+                                    : AssetImage('lib/assets/images/avatar.png'),
+                                radius: 50,
+                              ),
+                              Positioned(
+                                top: 0,
+                                right: 0,
+                                child: Container(
+                                    height: 50,
+                                    width: 50,
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.white,
+                                        border:
+                                            Border.all(color: AppBarBikin.colors[0])),
+                                    child: Center(
+                                      child: IconButton(
+                                        icon: Icon(
+                                          Icons.add_a_photo,
+                                          color:  AppBarBikin.colors[0],
+                                        ),
+                                        onPressed: () {
+                                          showDialog<void>(
+                                            context: context,
+                                            barrierDismissible:
+                                                false, // user must tap button!
+                                            builder: (BuildContext context) {
+                                              return AlertDialog(
+                                                title: Text('Select Image'),
+                                                content: SingleChildScrollView(
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
+                                                    children: <Widget>[
+                                                      IconButton(
+                                                        icon: Icon(
+                                                          Icons.camera_alt,
+                                                          size: 50,
+                                                        ),
+                                                        onPressed: () async {
+                                                          Navigator.of(context)
+                                                              .pop();
+                                                          getImage();
+                                                        },
                                                       ),
-                                                      onPressed: () async {
-                                                        Navigator.of(context)
-                                                            .pop();
-                                                        getImage();
-                                                      },
-                                                    ),
-                                                    IconButton(
-                                                      icon: Icon(
-                                                        Icons.image,
-                                                        size: 50,
-                                                      ),
-                                                      onPressed: () async {
-                                                        Navigator.of(context)
-                                                            .pop();
-                                                        var image = await ImagePicker
-                                                            .pickImage(
-                                                                source:
-                                                                    ImageSource
-                                                                        .gallery);
+                                                      IconButton(
+                                                        icon: Icon(
+                                                          Icons.image,
+                                                          size: 50,
+                                                        ),
+                                                        onPressed: () async {
+                                                          Navigator.of(context)
+                                                              .pop();
+                                                          var image = await ImagePicker
+                                                              .pickImage(
+                                                                  source:
+                                                                      ImageSource
+                                                                          .gallery);
 
-                                                        setState(() {
-                                                          _image = image;
-                                                        });
-                                                      },
-                                                    ),
-                                                  ],
+                                                          setState(() {
+                                                            _image = image;
+                                                          });
+                                                        },
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                              actions: <Widget>[
-                                                FlatButton(
-                                                  child: Text('Cancel'),
-                                                  onPressed: () {
-                                                    Navigator.of(context).pop();
-                                                  },
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                      },
-                                    ),
-                                  )),
-                            )
-                          ],
+                                                actions: <Widget>[
+                                                  FlatButton(
+                                                    child: Text('Cancel'),
+                                                    onPressed: () {
+                                                      Navigator.of(context).pop();
+                                                    },
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        },
+                                      ),
+                                    )),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                              labelText: 'Nama',
-                              labelStyle:
-                                  TextStyle(fontWeight: FontWeight.bold)),
-                          controller: _nameController,
-                          validator: (val) {
-                            return val.isEmpty ? 'Nama Kosong' : null;
-                          },
-                        ),
-                      ),
-                      Container(
-                        child: TextFormField(
-                          controller: _emailController,
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: InputDecoration(
-                              labelText: 'Email',
-                              labelStyle:
-                                  TextStyle(fontWeight: FontWeight.bold)),
-                          validator: (val) {
-                            return val.isEmpty ? 'Email Kosong' : null;
-                          },
-                        ),
-                      ),
-                      Container(
-                        width: double.infinity,
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton<String>(
-                            value: dropdownValue == 'L'
-                                ? 'Laki-Laki'
-                                : 'Perempuan',
-                            items: <String>['Laki-Laki', 'Perempuan']
-                                .map((String value) {
-                              return new DropdownMenuItem<String>(
-                                value: value,
-                                child: new Text(value),
-                              );
-                            }).toList(),
-                            onChanged: (value) {
-                              setState(() {
-                                if (value == 'Laki-Laki') {
-                                  dropdownValue = 'L';
-                                } else {
-                                  dropdownValue = 'P';
-                                }
-                                print(dropdownValue);
-                              });
+                        Container(
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                                labelText: 'Nama',
+                                labelStyle:
+                                    TextStyle(fontWeight: FontWeight.bold)),
+                            controller: _nameController,
+                            validator: (val) {
+                              return val.isEmpty ? 'Nama Kosong' : null;
                             },
                           ),
                         ),
-                      ),
-                      Divider(
-                        thickness: 1,
-                        color: Colors.grey,
-                      ),
-                      Container(
-                        child: TextFormField(
-                          controller: _kotaController,
-                          decoration: InputDecoration(
-                              labelText: 'Kota',
-                              labelStyle:
-                                  TextStyle(fontWeight: FontWeight.bold)),
-                          validator: (val) {
-                            return val.isEmpty ? 'Kota Kosong' : null;
-                          },
+                        Container(
+                          child: TextFormField(
+                            controller: _emailController,
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(
+                                labelText: 'Email',
+                                labelStyle:
+                                    TextStyle(fontWeight: FontWeight.bold)),
+                            validator: (val) {
+                              return val.isEmpty ? 'Email Kosong' : null;
+                            },
+                          ),
                         ),
-                      ),
-                      Container(
-                        child: TextFormField(
-                          controller: _phoneController,
-                          keyboardType: TextInputType.phone,
-                          decoration: InputDecoration(
-                              labelText: 'No.HP',
-                              labelStyle:
-                                  TextStyle(fontWeight: FontWeight.bold)),
-                          validator: (val) {
-                            return val.isEmpty
-                                ? 'Nomor Handphone Kosong'
-                                : null;
-                          },
-                        ),
-                      ),
-                      Container(
-                        child: TextFormField(
-                          controller: _passwordlController,
-                          obscureText: _obsecure,
-                          decoration: InputDecoration(
-                              suffixIcon: FlatButton(
-                                child: Icon(
-                                  Icons.remove_red_eye,
-                                  color: obsecureColor,
-                                ),
-                                onPressed: () {
-                                  _setObsecure();
-                                },
-                              ),
-                              labelText: 'Password',
-                              labelStyle:
-                                  TextStyle(fontWeight: FontWeight.bold)),
-                          validator: (val) {
-                            if (val.isEmpty) {
-                              return 'Password Kosong';
-                            } else {
-                              if (val == _passwordConfirmationController.text) {
-                                return null;
-                              } else {
-                                return 'Password Tidak Sama';
-                              }
-                            }
-                          },
-                        ),
-                      ),
-                      Container(
-                        child: TextFormField(
-                          controller: _passwordConfirmationController,
-                          obscureText: _obsecure1,
-                          decoration: InputDecoration(
-                              suffixIcon: FlatButton(
-                                child: Icon(
-                                  Icons.remove_red_eye,
-                                  color: obsecureColor1,
-                                ),
-                                onPressed: () {
-                                  _setObsecure1();
-                                },
-                              ),
-                              labelText: 'Konfirmasi Password ',
-                              labelStyle:
-                                  TextStyle(fontWeight: FontWeight.bold)),
-                          validator: (val) {
-                            if (val.isEmpty) {
-                              return 'Password Kosong';
-                            } else {
-                              if (val == _passwordlController.text) {
-                                return null;
-                              } else {
-                                return 'Password Tidak Sama';
-                              }
-                            }
-                          },
-                        ),
-                      ),
-                      Container(
-                          margin: EdgeInsets.only(top: 30),
-                          height: 60,
-                          decoration: BoxDecoration(
-                              color: MaxColor.merah,
-                              borderRadius: BorderRadius.circular(5)),
-                          child: FlatButton(
-                            child: Center(
-                              child: Text(
-                                'Daftar',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 24),
-                              ),
+                        Container(
+                          width: double.infinity,
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton<String>(
+                              value: dropdownValue == 'L'
+                                  ? 'Laki-Laki'
+                                  : 'Perempuan',
+                              items: <String>['Laki-Laki', 'Perempuan']
+                                  .map((String value) {
+                                return new DropdownMenuItem<String>(
+                                  value: value,
+                                  child: new Text(value),
+                                );
+                              }).toList(),
+                              onChanged: (value) {
+                                setState(() {
+                                  if (value == 'Laki-Laki') {
+                                    dropdownValue = 'L';
+                                  } else {
+                                    dropdownValue = 'P';
+                                  }
+                                  print(dropdownValue);
+                                });
+                              },
                             ),
-                            onPressed: () {
-                              if (_formKey.currentState.validate()) {
-                                showDialog(
-                                    context: context,
-                                    builder: (BuildContext context) {
-                                      if (_image == null) {
-                                        return AlertDialog(
-                                          content:
-                                              Text('Harap masukkan gambar'),
-                                          actions: <Widget>[
-                                            FlatButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                child: Text('Ok'))
-                                          ],
-                                        );
-                                      } else {
-                                        _postRegister(
-                                            name: _nameController.text,
-                                            gender: dropdownValue,
-                                            email: _emailController.text,
-                                            password: _passwordlController.text,
-                                            photo: _image,
-                                            kota: _kotaController.text,
-                                            phone: _phoneController.text,
-                                            context: context,
-                                            confirm:
-                                                _passwordConfirmationController
-                                                    .text);
-                                        return AlertDialog(
-                                            content: Container(
-                                                height: MediaQuery.of(context)
-                                                        .size
-                                                        .height /
-                                                    10,
-                                                child: Column(
-                                                  children: <Widget>[
-                                                    CircularProgressIndicator(),
-                                                    SizedBox(
-                                                      height: 10,
-                                                    ),
-                                                    Text('Tunggu Sebentar...')
-                                                  ],
-                                                )));
-                                      }
-                                    });
+                          ),
+                        ),
+                        Divider(
+                          thickness: 1,
+                          color: Colors.grey,
+                        ),
+                        Container(
+                          child: TextFormField(
+                            controller: _kotaController,
+                            decoration: InputDecoration(
+                                labelText: 'Kota',
+                                labelStyle:
+                                    TextStyle(fontWeight: FontWeight.bold)),
+                            validator: (val) {
+                              return val.isEmpty ? 'Kota Kosong' : null;
+                            },
+                          ),
+                        ),
+                        Container(
+                          child: TextFormField(
+                            controller: _phoneController,
+                            keyboardType: TextInputType.phone,
+                            decoration: InputDecoration(
+                                labelText: 'No.HP',
+                                labelStyle:
+                                    TextStyle(fontWeight: FontWeight.bold)),
+                            validator: (val) {
+                              return val.isEmpty
+                                  ? 'Nomor Handphone Kosong'
+                                  : null;
+                            },
+                          ),
+                        ),
+                        Container(
+                          child: TextFormField(
+                            controller: _passwordlController,
+                            obscureText: _obsecure,
+                            decoration: InputDecoration(
+                                suffixIcon: FlatButton(
+                                  child: Icon(
+                                    Icons.remove_red_eye,
+                                    color: obsecureColor,
+                                  ),
+                                  onPressed: () {
+                                    _setObsecure();
+                                  },
+                                ),
+                                labelText: 'Password',
+                                labelStyle:
+                                    TextStyle(fontWeight: FontWeight.bold)),
+                            validator: (val) {
+                              if (val.isEmpty) {
+                                return 'Password Kosong';
+                              } else {
+                                if (val == _passwordConfirmationController.text) {
+                                  return null;
+                                } else {
+                                  return 'Password Tidak Sama';
+                                }
                               }
                             },
-                          )),
-                    ],
+                          ),
+                        ),
+                        Container(
+                          child: TextFormField(
+                            controller: _passwordConfirmationController,
+                            obscureText: _obsecure1,
+                            decoration: InputDecoration(
+                                suffixIcon: FlatButton(
+                                  child: Icon(
+                                    Icons.remove_red_eye,
+                                    color: obsecureColor1,
+                                  ),
+                                  onPressed: () {
+                                    _setObsecure1();
+                                  },
+                                ),
+                                labelText: 'Konfirmasi Password ',
+                                labelStyle:
+                                    TextStyle(fontWeight: FontWeight.bold)),
+                            validator: (val) {
+                              if (val.isEmpty) {
+                                return 'Password Kosong';
+                              } else {
+                                if (val == _passwordlController.text) {
+                                  return null;
+                                } else {
+                                  return 'Password Tidak Sama';
+                                }
+                              }
+                            },
+                          ),
+                        ),
+                        Container(
+                            margin: EdgeInsets.only(top: 30),
+                            height: 60,
+                            decoration: BoxDecoration(
+                                color:  AppBarBikin.colors[1],
+                                borderRadius: BorderRadius.circular(5)),
+                            child: FlatButton(
+                              child: Center(
+                                child: Text(
+                                  'Daftar',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 24),
+                                ),
+                              ),
+                              onPressed: () {
+                                if (_formKey.currentState.validate()) {
+                                  showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        if (_image == null) {
+                                          return AlertDialog(
+                                            content:
+                                                Text('Harap masukkan gambar'),
+                                            actions: <Widget>[
+                                              FlatButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text('Ok'))
+                                            ],
+                                          );
+                                        } else {
+                                          _postRegister(
+                                              name: _nameController.text,
+                                              gender: dropdownValue,
+                                              email: _emailController.text,
+                                              password: _passwordlController.text,
+                                              photo: _image,
+                                              kota: _kotaController.text,
+                                              phone: _phoneController.text,
+                                              context: context,
+                                              confirm:
+                                                  _passwordConfirmationController
+                                                      .text);
+                                          return AlertDialog(
+                                              content: Container(
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height /
+                                                      10,
+                                                  child: Column(
+                                                    children: <Widget>[
+                                                      CircularProgressIndicator(),
+                                                      SizedBox(
+                                                        height: 10,
+                                                      ),
+                                                      Text('Tunggu Sebentar...')
+                                                    ],
+                                                  )));
+                                        }
+                                      });
+                                }
+                              },
+                            )),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           isLoading
               ? Center(
@@ -523,8 +522,23 @@ class _RegisterState extends State<Register> {
                   ),
                 )
               : Container(),
+          Container(
+            padding:
+                EdgeInsets.only(top: MediaQuery.of(context).padding.top * 1.5),
+            // height: MediaQuery.of(context).size.height * 0.25,
+            decoration: BoxDecoration(
+                // color: MaxColor.merah
+                ),
+            child: Row(
+              children: <Widget>[
+                IconButton(
+                    icon: Icon(Icons.arrow_back_ios),
+                    onPressed: () => Navigator.pop(context))
+              ],
+            ),
+          ),
         ],
-      )),
+      ),
     );
   }
 }

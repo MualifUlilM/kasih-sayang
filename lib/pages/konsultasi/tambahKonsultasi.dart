@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:KasihSayang/appBar.dart';
 
 class TambahKonsultasi extends StatefulWidget {
   @override
@@ -9,14 +10,15 @@ class _TambahKonsultasiState extends State<TambahKonsultasi> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Tambah Konsultasi"),
-      ),
+      // appBar: AppBar(
+      //   title: Text("Tambah Curhatan"),
+      // ),
       body: Padding(
         padding: EdgeInsets.all(20),
         child: ListView(
           physics: NeverScrollableScrollPhysics(),
           children: <Widget>[
+            AppBarBikin(),
             Container(
               decoration: BoxDecoration(color: Colors.grey[300]),
               padding: EdgeInsets.all(10),
@@ -67,7 +69,7 @@ class _TambahKonsultasiState extends State<TambahKonsultasi> {
                   margin: EdgeInsets.only(top: 120, bottom: 20),
                   height: 60,
                   // width: 120,
-                  decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(3)),
+                  decoration: BoxDecoration(color: Theme.of(context).primaryColor, borderRadius: BorderRadius.circular(3)),
                   child: Center(child: Text("Kirim", style: TextStyle(fontSize:24, fontWeight: FontWeight.bold, color: Colors.white)),),
                 ),
           ],

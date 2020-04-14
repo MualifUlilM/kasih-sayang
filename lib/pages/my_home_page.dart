@@ -1,3 +1,4 @@
+import 'package:KasihSayang/pages/cart/cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -42,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 5,
       initialIndex: widget.index == null ? 0 : widget.index,
       child: Scaffold(
         body: TabBarView(
@@ -50,6 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
             HomePage(),
             ProductPage(),
             // Riwayat(),
+            CartPage(),
             TransactionPage(),
             Konsultasi(),
           ],
@@ -57,8 +59,8 @@ class _MyHomePageState extends State<MyHomePage> {
         bottomNavigationBar: Container(
           decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(25), topLeft: Radius.circular(25)),
+              // borderRadius: BorderRadius.only(
+              //     topRight: Radius.circular(25), topLeft: Radius.circular(25)),
               boxShadow: [
                 new BoxShadow(
                     color: Colors.grey, offset: Offset(0, -0.5), blurRadius: 6)
@@ -73,6 +75,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 icon: Icon(Icons.apps),
               ),
               Tab(
+                icon: Icon(Icons.shopping_cart),
+              ),
+              Tab(
                 icon: Icon(Icons.list),
               ),
               Tab(
@@ -80,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
             unselectedLabelColor: Colors.black,
-            labelColor: MaxColor.merah,
+            labelColor: Theme.of(context).primaryColor,
             indicatorColor: Colors.transparent,
           ),
         ),

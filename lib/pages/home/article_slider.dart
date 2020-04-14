@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:maxiaga/service/get/get.dart';
+import 'package:KasihSayang/service/get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -12,11 +12,11 @@ class ArticlesSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height / 2.5,
+      height: MediaQuery.of(context).size.height*0.5,
       width: MediaQuery.of(context).size.width,
       child: Container(
           margin:
-              EdgeInsets.only(bottom: MediaQuery.of(context).size.height / 50),
+              EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.05),
           child: _articles.length == 0
               ? Center(
                   child: CircularProgressIndicator(),
@@ -46,7 +46,7 @@ class ArticlesSlider extends StatelessWidget {
                                 children: <Widget>[
                                   Container(
                                     height:
-                                        MediaQuery.of(context).size.height / 6,
+                                        MediaQuery.of(context).size.height *0.15,
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.only(
@@ -63,7 +63,7 @@ class ArticlesSlider extends StatelessWidget {
                                   Container(
                                     padding: EdgeInsets.all(5),
                                     height:
-                                        MediaQuery.of(context).size.height / 10,
+                                        MediaQuery.of(context).size.height * 0.1,
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                       color: Colors.white,

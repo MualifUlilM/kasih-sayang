@@ -6,6 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 // import '../../providers/outlets.dart';
 import '../../providers/outlet.dart';
 import './outlet_card.dart';
+import '../../providers/user.dart';
 
 class OutletsAround extends StatefulWidget {
   final List<Outlet> outlets;
@@ -55,6 +56,7 @@ class _OutletsAroundState extends State<OutletsAround> {
   @override
   Widget build(BuildContext context) {
     final _outlets = widget.outlets;
+    final userProvider = Provider.of<User>(context);
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -96,10 +98,33 @@ class _OutletsAroundState extends State<OutletsAround> {
                     markers: _markers,
                   ),
                 if (_outlets.length < 1)
-                  Center(
-                    child: Text(
-                        'Maaf Kami Tidak Dapat Menemukan Spbu Disekitar anda'),
+                   Stack(
+                     children: <Widget>[
+                       GoogleMap(
+                    compassEnabled: true,
+                    onMapCreated: _onMapCreated,
+                    initialCameraPosition: CameraPosition(
+                      target: LatLng(userProvider.lat, userProvider.lng),
+                      zoom: 16.0,
+                    ),
+                    markers: _markers,
                   ),
+                  Container(
+                    height: MediaQuery.of(context).size.height,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.black38,
+                    ),
+                    child: Center(
+                      child: Text('Tidak terdapat Outlet disekitar anda',style:TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        // fontWeight: FontWeight.bold,
+                      ),textAlign: TextAlign.center,),
+                    ),
+                  )
+                     ],
+                   ),
                 Container(
                   width: MediaQuery.of(context).size.width,
                   margin: EdgeInsets.only(top: 80),

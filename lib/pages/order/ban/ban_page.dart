@@ -4,7 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
 import 'buttonBan.dart';
-import 'package:maxiaga/providers/user.dart';
+import 'package:KasihSayang/providers/user.dart';
 
 class BanPage extends StatefulWidget {
   static const routeName = 'ban';

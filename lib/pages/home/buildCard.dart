@@ -15,14 +15,15 @@ class BuildCard extends StatelessWidget {
   Widget build(BuildContext context) {
     // icon
     List<List<dynamic>> _iconName = [
-      ["Service", Image.asset('lib/assets/images/servis.png')],
-      ["Oli", Image.asset('lib/assets/images/oli.png')],
-      ["Bensin", Image.asset('lib/assets/images/bensin.png')],
-      ["Ban", Image.asset('lib/assets/images/ban.png')],
+      ["Cheese Tea", Image.asset('lib/assets/images/cheese.png',fit: BoxFit.fitHeight,)],
+      ["Mojito", Image.asset('lib/assets/images/mojitodrink.png', fit: BoxFit.fitHeight,)],
+      ["Bubble", Image.asset('lib/assets/images/bubble-tea.png', fit: BoxFit.fitHeight,)],
+      ["Iced Tea", Image.asset('lib/assets/images/icetea.png', fit: BoxFit.fitHeight,)],
     ];
+    
 
     // route
-    List<Widget> pages = [ServicePage(), OliPage(), BensinPage(), BanPage()];
+    List<Widget> pages = [ServicePage(), ServicePage(), ServicePage(), ServicePage()];
 
     return Container(
         margin: EdgeInsets.fromLTRB(

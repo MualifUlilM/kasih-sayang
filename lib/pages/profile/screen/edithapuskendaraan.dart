@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:maxiaga/pages/profile/profile.dart';
+import 'package:KasihSayang/pages/profile/profile.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:provider/provider.dart';
 

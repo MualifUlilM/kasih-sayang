@@ -24,7 +24,7 @@ class OutletCard extends StatelessWidget {
               height: 5,
             ),
             Text(
-              "${_outlet.distance}",
+              "${_outlet.distance} KM",
               maxLines: 1,
             ),
           ],
